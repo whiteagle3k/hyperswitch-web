@@ -6,12 +6,12 @@ const sdkEnv = process.env.sdkEnv;
 
 let backendEndPoint =
   sdkEnv === "prod"
-    ? "https://api.hyperswitch.io/payments"
+    ? "https://api.singularitytools.net/payments"
     : sdkEnv === "sandbox"
-    ? "https://sandbox.hyperswitch.io/payments"
+    ? "https://sandbox.singularitytools.net/payments"
     : sdkEnv === "integ"
-    ? "https://integ-api.hyperswitch.io/payments"
-    : "https://sandbox.hyperswitch.io/payments";
+    ? "https://sandbox.singularitytools.net/payments"
+    : "https://sandbox.singularitytools.net/payments";
 
 let devServer = {
   contentBase: path.join(__dirname, "dist"),

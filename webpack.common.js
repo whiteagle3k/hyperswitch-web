@@ -18,19 +18,18 @@ let repoVersion = require("./package.json").version;
 let majorVersion = "v" + repoVersion.split(".")[0];
 
 let repoName = require("./package.json").name;
-let repoPublicPath =
-  sdkEnv === "local" ? "" : `/${repoVersion}/${majorVersion}`;
+let repoPublicPath = "";
 
 let sdkUrl;
 
 if (envSdkUrl === undefined) {
   sdkUrl =
     sdkEnv === "prod"
-      ? "https://checkout.hyperswitch.io"
+      ? "https://checkout.singularitytools.net"
       : sdkEnv === "sandbox"
-      ? "https://beta.hyperswitch.io"
+      ? "https://checkout.sandbox.singularitytools.net"
       : sdkEnv === "integ"
-      ? "https://dev.hyperswitch.io"
+      ? "https://checkout.sandbox.singularitytools.net"
       : "http://localhost:9050";
 } else {
   sdkUrl = envSdkUrl;
@@ -40,12 +39,12 @@ let backendEndPoint;
 if (envBackendUrl === undefined) {
   backendEndPoint =
     sdkEnv === "prod"
-      ? "https://api.hyperswitch.io"
+      ? "https://api.singularitytools.net"
       : sdkEnv === "sandbox"
-      ? "https://sandbox.hyperswitch.io"
+      ? "https://sandbox.singularitytools.net"
       : sdkEnv === "integ"
-      ? "https://integ-api.hyperswitch.io"
-      : "https://sandbox.hyperswitch.io";
+      ? "https://sandbox.singularitytools.net"
+      : "https://sandbox.singularitytools.net";
 } else {
   backendEndPoint = envBackendUrl;
 }
@@ -54,26 +53,26 @@ let confirmEndPoint;
 if (envBackendUrl === undefined) {
   confirmEndPoint =
     sdkEnv === "prod"
-      ? "https://api.hyperswitch.io"
+      ? "https://api.singularitytools.net"
       : sdkEnv === "sandbox"
-      ? "https://sandbox.hyperswitch.io"
+      ? "https://sandbox.singularitytools.net"
       : sdkEnv === "integ"
-      ? "https://integ-api.hyperswitch.io"
-      : "https://sandbox.hyperswitch.io";
+      ? "https://sandbox.singularitytools.net"
+      : "https://sandbox.singularitytools.net";
 } else {
   confirmEndPoint = envBackendUrl;
 }
 
 let logEndpoint =
   sdkEnv === "prod"
-    ? "https://api.hyperswitch.io/logs/sdk"
-    : "https://sandbox.hyperswitch.io/logs/sdk";
+    ? "https://api.singularitytools.net/logs/sdk"
+    : "https://sandbox.singularitytools.net/logs/sdk";
 
 // Set this to true to enable logging
-let enableLogging = true;
+let enableLogging = false;
 
 // Choose from DEBUG, INFO, WARNING, ERROR, SILENT
-let loggingLevel = "DEBUG";
+let loggingLevel = "INFO";
 
 // Maximum logs emitted for a particular event, to rate limit logs
 let maxLogsPushedPerEventName = 100;

@@ -276,15 +276,15 @@ let defaultOptions = {
   layout: ObjectLayout(defaultLayout),
   paymentMethodOrder: None,
   fields: defaultFields,
-  displaySavedPaymentMethodsCheckbox: true,
-  displaySavedPaymentMethods: true,
+  displaySavedPaymentMethodsCheckbox: false,
+  displaySavedPaymentMethods: false,
   readOnly: false,
   terms: defaultTerms,
-  branding: Auto,
+  branding: Never,
   wallets: defaultWallets,
   payButtonStyle: defaultStyle,
   customMethodNames: [],
-  showCardFormByDefault: true,
+  showCardFormByDefault: false,
   billingAddress: defaultBillingAddress,
   sdkHandleConfirmPayment: defaultSdkHandleConfirmPayment,
 }
@@ -941,20 +941,20 @@ let itemToObjMapper = (dict, logger) => {
     customerPaymentMethods: getCustomerMethods(dict, "customerPaymentMethods"),
     paymentMethodOrder: getOptionalStrArray(dict, "paymentMethodOrder"),
     fields: getFields(dict, "fields", logger),
-    branding: getWarningString(dict, "branding", "auto", ~logger)->getShowType(
+    branding: getWarningString(dict, "branding", "never", ~logger)->getShowType(
       "options.branding",
       logger,
     ),
     displaySavedPaymentMethodsCheckbox: getBoolWithWarning(
       dict,
       "displaySavedPaymentMethodsCheckbox",
-      true,
+      false,
       ~logger,
     ),
     displaySavedPaymentMethods: getBoolWithWarning(
       dict,
       "displaySavedPaymentMethods",
-      true,
+      false,
       ~logger,
     ),
     readOnly: getBoolWithWarning(dict, "readOnly", false, ~logger),
@@ -962,7 +962,7 @@ let itemToObjMapper = (dict, logger) => {
     wallets: getWallets(dict, "wallets", logger),
     customMethodNames: getCustomMethodNames(dict, "customMethodNames"),
     payButtonStyle: getStyle(dict, "payButtonStyle", logger),
-    showCardFormByDefault: getBool(dict, "showCardFormByDefault", true),
+    showCardFormByDefault: getBool(dict, "showCardFormByDefault", false),
     billingAddress: getBillingAddress(dict, "billingAddress", logger),
     sdkHandleConfirmPayment: dict
     ->getDictfromDict("sdkHandleConfirmPayment")
